@@ -19,9 +19,9 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController, private oauthService: OAuthService) {
     oauthService.redirectUri = 'http://localhost:8100';
-    oauthService.clientId = '0oabqsotq17CoayEm0h7';
+    oauthService.clientId = '0oaf1uzh3mTfBooCA0h7';
     oauthService.scope = 'openid profile email';
-    oauthService.issuer = 'https://dev-158606.oktapreview.com/oauth2/default';
+    oauthService.issuer = 'https://dev-543627.oktapreview.com/oauth2/default';
     oauthService.tokenValidationHandler = new JwksValidationHandler();
 
     // Load Discovery Document and then try to login the user
@@ -41,7 +41,7 @@ export class LoginPage {
       const authClient = new OktaAuth({
         clientId: this.oauthService.clientId,
         redirectUri: this.oauthService.redirectUri,
-        url: 'https://dev-158606.oktapreview.com',
+        url: 'https://dev-543627.oktapreview.com',
         issuer: 'default'
       });
       return authClient.signIn({
@@ -69,7 +69,7 @@ export class LoginPage {
           throw new Error('We cannot handle the ' + response.status + ' status');
         }
       }).fail((error) => {
-        console.error(error);
+        //console.error(error);
         this.error = error.message;
       });
     });
@@ -86,6 +86,7 @@ export class LoginPage {
       });
       this.navCtrl.push(TabsPage);
     }, (error) => {
+      //console.error(error);
       this.error = error;
     });
   }
